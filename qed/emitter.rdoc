@@ -1,0 +1,27 @@
+= Examples of JSYNC
+
+  require 'jsync'
+
+Lets start with a simple Hash.
+
+  h = { 'a'=>1, 'b'=>2 }
+
+We can convert the hash to JSYNC via #to_jsync.
+
+  h.to_jsync  #=> %[{"a": 1, "b": 2}]
+
+Basic structures such as Hash and Array have plain JSYNC forms, just
+as they do in normal JSON, but other object types use the bang type
+indicator and provided their state, the value of their instance variables.
+
+  class ::J
+    attr :a,:b
+    def initialize(a,b)
+      @a, @b = a, b
+    end
+  end
+
+  j = ::J.new(1,2)
+
+  j.to_jsync  #=> %[{"!": "J", "a": 1, "b": 2}]
+

@@ -1,0 +1,18 @@
+= JSYNC Parser
+
+  require 'jsync'
+
+Let's say we have a JSYNC document as follows:
+
+  {
+    "a": 1,
+    "b": 2
+  }
+
+The document text is stored in @text. We can use `JSYNC.load` to parse
+the document.
+
+  data = JSYNC.load(@text)
+
+  data.assert == {"a"=>1, "b"=>2}
+
